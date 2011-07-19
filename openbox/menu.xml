@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/       file:///usr/share/openbox/menu.xsd">
+	<menu id="root-menu" label="Openbox 3">
+		<item label="Text Editor">
+			<action name="Execute">
+				<execute>
+					emacs23
+				</execute>
+			</action>
+		</item>
+		<item label="Terminal emulator">
+			<action name="Execute">
+				<execute>
+					x-terminal-emulator
+				</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="Web browser">
+			<action name="Execute">
+				<execute>
+					x-www-browser
+				</execute>
+			</action>
+		</item>
+		<item label="File Manager">
+			<action name="Execute">
+				<execute>
+					thunar ~/
+				</execute>
+			</action>
+		</item>
+		<separator/>
+		<!-- This requires the presence of the 'menu' package to work -->
+		<menu id="root-menu-294637" label="Take a rest">
+			<item label="Stardict">
+				<action name="Execute">
+					<execute>
+						stardict
+					</execute>
+				</action>
+			</item>
+			<item label="Fetion">
+				<action name="Execute">
+					<execute>
+						linux-fetion
+					</execute>
+				</action>
+			</item>
+			<item label="Pidgin">
+				<action name="Execute">
+					<execute>
+						pidgin
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-774659" label="My project">
+			<item label="Git gui">
+				<action name="Execute">
+					<execute>
+						gitk
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="Debian"/>
+		<separator/>
+		<item label="ObMenu">
+			<action name="Execute">
+				<execute>
+					obmenu
+				</execute>
+			</action>
+		</item>
+		<item label="ObConf">
+			<action name="Execute">
+				<execute>
+					obconf
+				</execute>
+			</action>
+		</item>
+		<item label="Reconfigure">
+			<action name="Reconfigure"/>
+		</item>
+		<separator/>
+		<item label="ShutDown">
+			<action name="Execute">
+				<execute>
+				  mypoweroff.sh 
+				</execute>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>
