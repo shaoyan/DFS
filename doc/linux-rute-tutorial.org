@@ -1,0 +1,26 @@
+Linux rute tutrial -- study
+
+* shell 命令行编辑快捷操作
+| key        | motion                            |
+|------------+-----------------------------------|
+| Ctrl-a     | Move to the beginning of the line |
+| Ctrl-e     | Move to the end of the line       |
+| Ctrl-h     | Erase backward                    |
+| Ctrl-d     | Erase forward                     |
+| Ctrl-f     | Move forward one character        |
+| Ctrl-b     | Move backward one character       |
+| Alt-f      | Move forward one word.            |
+| Alt-b      | Move backward one word.           |
+| Alt-Ctrl-f | Erase forward one word.           |
+| Alt-Ctrl-b | Erase backward one word.          |
+| Ctrl-p     | Previous command                  |
+| Ctrl-n     | Next command                      |
+
+* pipe 管道相关
+大部分Linux 命令都有默认的输入选项，即stdin——标准输入。有几种管道记号
+如下：
+| symbol | function               |
+|--------+------------------------|
+| >      | write output to a file |
+| <      | expand a file to stdin |
+|        |                        |

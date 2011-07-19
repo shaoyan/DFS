@@ -1,0 +1,30 @@
+LaTex 学习笔记
+
+* DONE 基础结构
+** 最简模板
+
+   \documentclass{article}
+
+   \begin{document}
+   \section{Start}
+   ``this is a little fun''
+
+   \section{End}
+
+   \end{document}[1]
+
+[1] 如果含有目录或者交叉引用的话，源文件需要被编译两次，才能正常显示目
+录或交叉引用。
+
+** 段落
+Latex 是用空白行来分割各个段落。如果只是简单的输入一个回车，Latex的输
+出结果中并不会另起一行。
+
+* TODO 表格处理
+
+* TODO 图形处理
+
+* TODO 数学排版
+
+* DONE 结构详解
+  

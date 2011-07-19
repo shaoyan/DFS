@@ -1,0 +1,16 @@
+* 一些实用的 Emacs 插件 及配置
+** 加载 el 文件
+(setq load-path (cons "~/.emacs.d/lisp/" load-path))
+
+** 标签归类 -> tabbar.el
+ (require 'tabbar)
+ (tabbar-mode)
+
+** 自动补全 -> auto-complete.el
+ (require 'auto-complete)
+ (global-auto-complete-mode t)
+
+** 加载配色
+ (require 'color-theme)
+ (color-theme-initialize)
+ (color-theme-jsc-dark) ;;很不错的配色

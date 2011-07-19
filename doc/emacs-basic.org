@@ -1,0 +1,193 @@
+Emacs 学习笔记 - 基础操作
+
+* Basic Edit Tips
+** 交换两行 C-x C-t
+
+sample:
+
+second line.
+first line.
+third line.
+
+Input: C-x C-t[1]
+
+first line.
+second line.
+third line.
+
+[1] 对比 C-t 只是交换同一行中的字符或单词。
+
+** 查找光标处单词 C-x C-w
+C-s C-w 可以把光标所在位置到下一个断点（空格或标点处）的内容复制到查找
+字符串中去。
+
+* 查看设置变量
+`C-h v VAR <RET>'
+     Display the value and documentation of variable VAR
+     (`describe-variable').
+
+`M-x set-variable <RET> VAR <RET> VALUE <RET>'
+     Change the value of variable VAR to VALUE.
+
+示例：
+     M-x set-variable <RET> fill-column <RET> 75 <RET>
+
+sets `fill-column' to 75.
+
+* 寄存器应用
+** 保存位置
+
+`C-x r <SPC> R'
+Record the position of point and the current buffer in register R
+  (`point-to-register').
+
+`C-x r j R'
+  Jump to the position and buffer saved in register R
+  (`jump-to-register').
+
+
+** 保存文字
+`C-x r s R'
+     Copy region into register R (`copy-to-register').
+
+`C-x r i R'
+     Insert text from register R (`insert-register').
+
+`M-x append-to-register <RET> R'
+     Append region to text in register R.
+
+`M-x prepend-to-register <RET> R'
+     Prepend region to text in register R.
+
+** 保存矩形区域
+   只保存矩形选取的形状，并不涉及选取内的内容
+`C-x r r R'
+     Copy the region-rectangle into register R
+     (`copy-rectangle-to-register').  With numeric argument, delete it
+     as well.
+
+`C-x r i R'
+     Insert the rectangle stored in register R (if it contains a
+     rectangle) (`insert-register').
+* 正则表达式
+** 基础
+Emacs 中的正则表达式特殊符号有
+
+| 符号 | 意义                |
+|------+---------------------|
+| `$', | 句尾                |
+| `^', | 句首                |
+| `.', | 单个任意字符        |
+| `*', | 重复任意次          |
+| `+', | 一定重复>=1次       |
+| `?'  | 不重复多次1 or 0 次 |
+| '[', |                     |
+| `\'. | 特殊意义匹配        |
+
+** 不 `贪婪' 的匹配
+
+`*?', `+?', `??'  are non-greedy variants of the operators above.  The
+normal operators `*', `+', `?' are "greedy" in that they match as
+much as they can, as long as the overall regexp can still match.
+With a following `?', they are non-greedy: they will match as
+little as possible.
+
+Thus, both `ab*' and `ab*?' can match the string `a' and the
+string `abbbb'; but if you try to match them both against the text
+`abbb', `ab*' will match it all (the longest valid match), while
+`ab*?'  will match just `a' (the shortest valid match).
+
+** A or B 的情况
+*** 单个字符间的选择
+    
+    a[br]d  --> abd 或则 ard
+
+*** 多个字符串间的选择
+
+    \.\(aux\|log\|dvi\|toc\)$ --> 表示表示扩展名为.aux 或 .log 或.dvi
+    或 .toc 的文件名。其中 `\|' 表示两个表达式间或的关系， `\('与`\)'限
+    制了 `\|'的作用范围。
+* Some tips
+
+C-l
+上下方向调整视图，使得当前行位于窗口的顶端、中间、底端，与 vim 的 z+/z-/z. 功能相同
+
+C-x r Space x
+C-x r j x
+设置 mark，在几个位置之间跳转
+
+[M--] M-c, M-u, M-l
+切换后面一个单词的大小写，分别是 captialize, upper, lower
+
+C-x C-u, C-x C-l
+切换 region 的大小写
+
+M-x eval-current-buffer
+如果你刚向你的 .emacs 文件中加了一个新功能，并且想看看效果，但是又不想退出 emacs，因为你还打开了其它很多文件，该怎么办呢？用这个命令就行了，emacs 会把当前文件当作是一个 elisp 文件来执行它。
+
+C-up, M-{, C-down, M-}
+移动到段落的开始或结尾
+
+M-k，C-x backspace
+删除一到句尾／句首
+
+M--
+改变命令的作用方向
+
+M-^
+将当前行连接到上一行的末尾，中间用空格隔开
+
+M-w, C-w
+复制／剪切选定的 region
+
+M-gg
+跳转到某一行，并设定 mark
+
+C-q XX
+输入一些控制字符，类似于 vim 的 C-v
+
+C-x C-w
+C-x C-i
+分别是另存和插入文件，类似于 vim 的 w 和 r 命令
+
+replace-string, replace-regexp, query-replace, query-replace-regexp, isearch-query-replace, isearch-query-replace-regexp, replace-rectangle
+各种替换操作
+
+C-x r t/d/k/y
+分别是列选择模式下的 overwrite, delete, kill, yank 操作
+
+M-x untabify
+将选定区域的 tab 全部替换为 spaces
+
+M-x delete-trailing-whitespace
+删除所有行尾空格
+
+M-x describe-char
+查看光标下面字符的编码方式及码值
+
+M-m
+移动到行首第一个非空字符
+
+C-t, M-t, C-x C-t
+交换两个字符／两个单词／两行的位置
+
+C-x 0
+关闭窗口
+
+M-s, M-S, M-x center-region (Text Mode Only)
+分别使当前行，当前段落，当前 region 居中
+
+C-M-\
+重新缩进当前 region
+
+M-;
+注释掉当前行或当前 region
+
+M-r
+移动到目前窗口的第 x 行，参数通过 C-u/M- 提供，不加参数的话移动到中间
+
+C-x C-o
+删除当前的空行，或将多个连续的空行合并为一个
+
+C-u C-@
+回到刚才的位置，类似于 vim 中的 C-o

@@ -37,10 +37,6 @@
 (define-key global-map "\C-ca" 'org-agenda) 
 (setq org-log-done 'time)
 
- ;; (require 'color-theme)
- ;; (color-theme-initialize)
- ;; (color-theme-clarity)
-
  ;; (load "AucTeX.el" nil t t)
  ;; (load "preview-latex.el" nil t t)
  ;; (if (string-equal system-type "windows-nt")

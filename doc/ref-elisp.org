@@ -1,0 +1,79 @@
+eLisp 学习笔记
+#+ <<Learning Gnu Emacs>>
+
+
+* <<Learning Gnu Emacs>> 之 eLisp 简介
+
+Emacs Lisp 是 Lisp语言的一种全功能实现。与其他语言（vim）的宏或脚本语
+言相比，它提供了更强大的功能（书的作者曾用 Emacs Lisp编写过一个小型
+的专家系统）。
+
+事实上完全可以把 Emacs Lisp 看作一个带有很多内部函数的LISP系统，只不
+过这个系统中的许多函数是用来实现文本处理，窗口管理，文件I/O和其他与文
+本编辑有关的功能的。
+
+
+* LISP 语言基本项
+
+|   | 函数           | 变量         | 原子项（单元） |
+|   | functions      | variables    | atoms          |
+|---+----------------+--------------+----------------|
+| \ | >              | <            | 任意类型的值   |
+| 1 |                |              | 整数           |
+| 2 |                |              | 浮点数         |
+| 3 | 基本元素的列表 | 无类型的区别 | 字符           |
+| 4 |                |              | 字符串         |
+| 5 |                |              | 符号[1]        |
+
+[1] 符号，指各种事物（如函数，变量）的名字，而不是它们的值。在引用这些
+名字时需要加上单引号 ‘ 。
+
+
+* 定义函数
+** defun 模板
+
+     (defun FUNCTION-NAME (ARGUMENTS...)
+       "OPTIONAL-DOCUMENTATION..."
+       (interactive ARGUMENT-PASSING-INFO)     ; optional
+       BODY...)
+
+** 安装函数
+
+   一个函数需要安装后才能使用，C+x C+e 或者写入.emacs 即可安装使用
+   
+
+* 变量声明及结构控制
+*** let
+let 赋值定义只会作为局部变量，即使用setq 修改该变量的值后，也不会影响
+同名全局变量。相反，用setq 赋值定义的变量始终为全局变量。
+
+
+   模板：
+
+     (let ((VARIABLE VALUE)
+           (VARIABLE VALUE)
+           ...)
+       BODY...)
+
+   示例：
+
+     (let ((zebra 'stripes)
+           (tiger 'fierce))
+       (message "One kind of animal has %s and another is %s."
+                zebra tiger))
+
+   Here, the varlist is `((zebra 'stripes) (tiger 'fierce))'.
+
+*** if
+     (if TRUE-OR-FALSE-TEST
+         ACTION-TO-CARRY-OUT-IF-THE-TEST-RETURNS-TRUE
+       ACTION-TO-CARRY-OUT-IF-THE-TEST-RETURNS-FALSE)
+
+   For example, the following `if' expression prints the message `4 is
+not greater than 5!' when you evaluate it in the usual way:
+
+     (if (> 4 5)                               ; if-part
+         (message "4 falsely greater than 5!") ; then-part
+       (message "4 is not greater than 5!"))   ; else-part
+
+*** 
