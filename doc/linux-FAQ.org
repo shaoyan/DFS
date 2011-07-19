@@ -1,0 +1,13 @@
+Linux 常见问题
+
+* 字符编码
+需要用到的工具
+ sudo apt-get install convmv iconv python-mutagen
+要转换文件编码请先进入要转换文件的目录
+
+转换文件名由GBK为UTF8
+ convmv -r -f cp936 -t utf8 --notest --nosmart *
+转换文件内容由GBK到UTF8
+iconv -f gbk -t utf8 $i > newfile 
+转换 mp3 标签编码
+ find . -iname "*.mp3" -execdir mid3iconv -e GBK {} \;
